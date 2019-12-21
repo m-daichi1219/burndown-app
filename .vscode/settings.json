@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true,
+  "editor.tabSize": 2,
+  "eslint.run": "onSave",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "eslint.validate": ["javascript", "javascriptreact"]
+}
