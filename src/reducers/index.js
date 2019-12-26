@@ -1,4 +1,4 @@
-import EDIT_TASK from '../constants/action-types';
+import { EDIT_TASK, DELETE_TASK } from '../constants/action-types';
 
 const initialState = {
   // TEST DATA
@@ -34,6 +34,12 @@ function rootReducer(state = initialState, action) {
     };
   }
 
+  if (action.type === DELETE_TASK) {
+    return {
+      ...state,
+      datas: state.datas.filter((data) => (data.id !== action.payload.id)),
+    };
+  }
 
   return state;
 }

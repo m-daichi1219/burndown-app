@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import EDIT_TASK from '../constants/action-types';
+import { EDIT_TASK, DELETE_TASK } from '../constants/action-types';
 import '../css/AppTableRow.css';
 
 const AppTableRow = (props) => {
@@ -16,6 +16,12 @@ const AppTableRow = (props) => {
     dispatch({ type: EDIT_TASK, payload });
   };
 
+  const handleDelete = (event) => {
+    const payload = {};
+    payload.id = event.target.parentNode.id;
+    dispatch({ type: DELETE_TASK, payload });
+  };
+
   return (
     <div draggable="true" className="row" id={task.id}>
       <div className="cell">
@@ -27,7 +33,7 @@ const AppTableRow = (props) => {
       <div className="cell">
         <input type="date" id="endDate" value={task.endDate} onChange={handleChange} />
       </div>
-      <button type="button" onClick={handleChange}>Button</button>
+      <button type="button" onClick={handleDelete}>削除</button>
     </div>
   );
 };
