@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import AppTableRow from './AppTableRow';
 
-
 const App = () => {
   const rowDatas = useSelector((state) => state.datas);
+
   const addTask = () => {
     // const { rowDatas } = this.state;
     // rowDatas.push({
