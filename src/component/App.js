@@ -1,28 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import AppTableRow from './AppTableRow';
 
-function App() {
+
+const App = () => {
+  const rowDatas = useSelector((state) => state.datas);
+  const addTask = () => {
+    // const { rowDatas } = this.state;
+    // rowDatas.push({
+    //   title: '', point: '', endDate: '', id: '',
+    // });
+
+    // this.setState({
+    //   rowDatas,
+    // });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          <code>src/App.js</code>
-            and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {rowDatas.map((rowData) => <AppTableRow id="tablerow" key={rowData.id} task={rowData} />)}
+      <button type="button" name="add-button" onClick={addTask}>タスクを追加</button>
     </div>
   );
-}
+};
 
 export default App;
