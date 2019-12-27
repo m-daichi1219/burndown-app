@@ -1,19 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import AppTableRow from './AppTableRow';
+import { ADD_TASK } from '../constants/action-types';
 
 const App = () => {
   const rowDatas = useSelector((state) => state.datas);
+  const dispatch = useDispatch();
 
   const addTask = () => {
-    // const { rowDatas } = this.state;
-    // rowDatas.push({
-    //   title: '', point: '', endDate: '', id: '',
-    // });
-
-    // this.setState({
-    //   rowDatas,
-    // });
+    dispatch({ type: ADD_TASK });
   };
 
   return (

@@ -1,4 +1,4 @@
-import { EDIT_TASK, DELETE_TASK } from '../constants/action-types';
+import { EDIT_TASK, DELETE_TASK, ADD_TASK } from '../constants/action-types';
 
 const initialState = {
   // TEST DATA
@@ -21,7 +21,14 @@ const initialState = {
   ],
 };
 
+// taskの配列にidを振りなおすヘルパー関数
+const setTaskIDHelper = (array) => Object.assign([], array.map((data, index) => {
+  const id = index;
+  return { ...data, id: `data${id}` };
+}));
+
 function rootReducer(state = initialState, action) {
+  // タスク編集時
   if (action.type === EDIT_TASK) {
     return {
       ...state,
@@ -34,13 +41,25 @@ function rootReducer(state = initialState, action) {
     };
   }
 
+  // タスク削除時
   if (action.type === DELETE_TASK) {
     return {
       ...state,
-      datas: state.datas.filter((data) => (data.id !== action.payload.id)),
+      datas: setTaskIDHelper(state.datas.filter((data) => (data.id !== action.payload.id))),
     };
   }
 
+  // タスク追加時
+  if (action.type === ADD_TASK) {
+    return {
+      ...state,
+      datas: setTaskIDHelper(state.datas.concat({
+        title: '', point: '', endDate: '', id: '',
+      })),
+    };
+  }
+
+  // 初期表示
   return state;
 }
 
