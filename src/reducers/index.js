@@ -1,24 +1,24 @@
 import {
-  EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT,
+  EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT, DELETE_SPRINT,
 } from '../constants/action-types';
 
 const initialState = {
   // TEST DATA
   datas: [
     {
-      title: 'title1', point: '1', endDate: '2019-12-21', id: 'data1',
+      title: 'title1', point: '32', endDate: '2019-12-21', id: 'data1',
     },
     {
-      title: 'title2', point: '2', endDate: '2019-12-22', id: 'data2',
+      title: 'title2', point: '24', endDate: '2019-12-22', id: 'data2',
     },
     {
-      title: 'title3', point: '3', endDate: '2019-12-23', id: 'data3',
+      title: 'title3', point: '13', endDate: '2019-12-23', id: 'data3',
     },
     {
-      title: 'title4', point: '4', endDate: '2019-12-24', id: 'data4',
+      title: 'title4', point: '32', endDate: '2019-12-24', id: 'data4',
     },
     {
-      title: 'title5', point: '5', endDate: '2019-12-25', id: 'data5',
+      title: 'title5', point: '54', endDate: '2019-12-25', id: 'data5',
     },
   ],
   sprints: [
@@ -144,6 +144,14 @@ function rootReducer(state = initialState, action) {
         id: `id${state.sprints.length}`,
         velocity: '',
       })),
+    };
+  }
+
+  // sprint削除時
+  if (action.type === DELETE_SPRINT) {
+    return {
+      ...state,
+      sprints: Object.assign([], state.sprints.slice(0, state.sprints.length - 1)),
     };
   }
 

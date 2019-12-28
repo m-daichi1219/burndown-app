@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { EDIT_VELOCITY, ADD_SPRINT } from '../constants/action-types';
+import { EDIT_VELOCITY, ADD_SPRINT, DELETE_SPRINT } from '../constants/action-types';
 import '../css/AppTableCol.css';
 
 const AppTableCol = () => {
@@ -15,8 +15,12 @@ const AppTableCol = () => {
     dispatch({ type: EDIT_VELOCITY, payload });
   };
 
-  const handleClick = () => {
+  const addSprint = () => {
     dispatch({ type: ADD_SPRINT });
+  };
+
+  const deleteSprint = () => {
+    dispatch({ type: DELETE_SPRINT });
   };
 
   return (
@@ -29,7 +33,8 @@ const AppTableCol = () => {
           </div>
         ))}
       </div>
-      <button type="button" onClick={handleClick}>Sprintを追加</button>
+      <button type="button" onClick={addSprint}>Sprintを追加</button>
+      <button type="button" onClick={deleteSprint}>Sprintを減らす</button>
     </>
   );
 };
