@@ -19,6 +19,68 @@ const initialState = {
       title: 'title5', point: '5', endDate: '2019-12-25', id: 'data5',
     },
   ],
+  sprints: [
+    {
+      sprint: 'Sprint1',
+      velocity: 10,
+    },
+    {
+      sprint: 'Sprint2',
+      velocity: 10,
+    },
+    {
+      sprint: 'Sprint3',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint4',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint5',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint6',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint7',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint8',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint9',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint10',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint11',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint12',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint13',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint14',
+      velocity: '',
+    },
+    {
+      sprint: 'Sprint15',
+      velocity: '',
+    },
+  ],
 };
 
 // taskの配列にidを振りなおすヘルパー関数

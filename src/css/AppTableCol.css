@@ -1,0 +1,10 @@
+.app-table-col {
+  overflow-x: auto;
+  height: 6rem;
+  white-space: nowrap;
+}
+
+.col {
+  display: inline-block;
+  width: 10%;
+}
