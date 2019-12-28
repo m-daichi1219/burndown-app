@@ -1,4 +1,6 @@
-import { EDIT_TASK, DELETE_TASK, ADD_TASK } from '../constants/action-types';
+import {
+  EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY,
+} from '../constants/action-types';
 
 const initialState = {
   // TEST DATA
@@ -21,63 +23,63 @@ const initialState = {
   ],
   sprints: [
     {
-      sprint: 'Sprint1',
+      id: 'id1',
       velocity: 10,
     },
     {
-      sprint: 'Sprint2',
+      id: 'id2',
       velocity: 10,
     },
     {
-      sprint: 'Sprint3',
+      id: 'id3',
       velocity: '',
     },
     {
-      sprint: 'Sprint4',
+      id: 'id4',
       velocity: '',
     },
     {
-      sprint: 'Sprint5',
+      id: 'id5',
       velocity: '',
     },
     {
-      sprint: 'Sprint6',
+      id: 'id6',
       velocity: '',
     },
     {
-      sprint: 'Sprint7',
+      id: 'id7',
       velocity: '',
     },
     {
-      sprint: 'Sprint8',
+      id: 'id8',
       velocity: '',
     },
     {
-      sprint: 'Sprint9',
+      id: 'id9',
       velocity: '',
     },
     {
-      sprint: 'Sprint10',
+      id: 'id10',
       velocity: '',
     },
     {
-      sprint: 'Sprint11',
+      id: 'id11',
       velocity: '',
     },
     {
-      sprint: 'Sprint12',
+      id: 'id12',
       velocity: '',
     },
     {
-      sprint: 'Sprint13',
+      id: 'id13',
       velocity: '',
     },
     {
-      sprint: 'Sprint14',
+      id: 'id14',
       velocity: '',
     },
     {
-      sprint: 'Sprint15',
+      id: 'id15',
       velocity: '',
     },
   ],
@@ -117,6 +119,19 @@ function rootReducer(state = initialState, action) {
       ...state,
       datas: setTaskIDHelper(state.datas.concat({
         title: '', point: '', endDate: '', id: '',
+      })),
+    };
+  }
+
+  // velocity編集時
+  if (action.type === EDIT_VELOCITY) {
+    return {
+      ...state,
+      sprints: Object.assign([], state.sprints.map((sprint) => {
+        if (sprint.id === action.payload.id) {
+          return { ...sprint, ...action.payload };
+        }
+        return sprint;
       })),
     };
   }
