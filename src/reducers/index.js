@@ -1,5 +1,5 @@
 import {
-  EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY,
+  EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT,
 } from '../constants/action-types';
 
 const initialState = {
@@ -132,6 +132,17 @@ function rootReducer(state = initialState, action) {
           return { ...sprint, ...action.payload };
         }
         return sprint;
+      })),
+    };
+  }
+
+  // sprint追加時
+  if (action.type === ADD_SPRINT) {
+    return {
+      ...state,
+      sprints: Object.assign([], state.sprints.concat({
+        id: `id${state.sprints.length}`,
+        velocity: '',
       })),
     };
   }

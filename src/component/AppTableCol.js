@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { EDIT_VELOCITY } from '../constants/action-types';
+import { EDIT_VELOCITY, ADD_SPRINT } from '../constants/action-types';
 import '../css/AppTableCol.css';
 
 const AppTableCol = () => {
@@ -15,8 +15,8 @@ const AppTableCol = () => {
     dispatch({ type: EDIT_VELOCITY, payload });
   };
 
-  const handleClick = (event) => {
-    event.preventDefault();
+  const handleClick = () => {
+    dispatch({ type: ADD_SPRINT });
   };
 
   return (
