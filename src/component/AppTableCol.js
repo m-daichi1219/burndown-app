@@ -27,7 +27,7 @@ const AppTableCol = () => {
     <>
       <div className="app-table-col">
         {sprints.map((sprint, index) => (
-          <div className="col" id="col">
+          <div className="col" id="col" key={sprint.id}>
             <p>{`Sprint${index}`}</p>
             <input type="number" id={sprint.id} value={sprint.velocity} onChange={handleChange} />
           </div>

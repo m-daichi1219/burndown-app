@@ -6,49 +6,64 @@ const initialState = {
   // TEST DATA
   datas: [
     {
-      title: 'title1', point: '32', endDate: '2019-12-21', id: 'data1',
+      title: 'title1', point: '12', endDate: '2019-12-21', id: 'data1',
     },
     {
-      title: 'title2', point: '24', endDate: '2019-12-22', id: 'data2',
+      title: 'title2', point: '8', endDate: '2019-12-22', id: 'data2',
     },
     {
       title: 'title3', point: '13', endDate: '2019-12-23', id: 'data3',
     },
     {
-      title: 'title4', point: '32', endDate: '2019-12-24', id: 'data4',
+      title: 'title4', point: '22', endDate: '2019-12-24', id: 'data4',
     },
     {
-      title: 'title5', point: '54', endDate: '2019-12-25', id: 'data5',
+      title: 'title5', point: '14', endDate: '2019-12-25', id: 'data5',
+    },
+    {
+      title: 'title6', point: '12', endDate: '2019-12-21', id: 'data6',
+    },
+    {
+      title: 'title7', point: '8', endDate: '2019-12-22', id: 'data7',
+    },
+    {
+      title: 'title8', point: '13', endDate: '2019-12-23', id: 'data8',
+    },
+    {
+      title: 'title9', point: '22', endDate: '2019-12-24', id: 'data9',
+    },
+    {
+      title: 'title10', point: '14', endDate: '2019-12-25', id: 'data10',
     },
   ],
   sprints: [
     {
       id: 'id1',
-      velocity: 10,
+      velocity: '12',
     },
     {
       id: 'id2',
-      velocity: 10,
+      velocity: '10',
     },
     {
       id: 'id3',
-      velocity: '',
+      velocity: '13',
     },
     {
       id: 'id4',
-      velocity: '',
+      velocity: '16',
     },
     {
       id: 'id5',
-      velocity: '',
+      velocity: '15',
     },
     {
       id: 'id6',
-      velocity: '',
+      velocity: '12',
     },
     {
       id: 'id7',
-      velocity: '',
+      velocity: '13',
     },
     {
       id: 'id8',
