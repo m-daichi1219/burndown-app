@@ -37,12 +37,15 @@ const chartDataHelper = (average, totalPoint) => {
 
 const AppLineChart = () => {
   // state
-  const datas = useSelector((state) => state.datas);
+  const datas = Object.assign([], useSelector((state) => state.datas));
   const sprints = Object.assign([], useSelector((state) => state.sprints));
 
   // chart datas(plan)
   const labels = sprints.map((sprint, index) => `Sprint${index}`);
-  const totalPoint = datas.reduce((acc, data) => acc + parseInt(data.point, 10), 0);
+  const totalPoint = datas.reduce((acc, data) => {
+    if (data.point.trim()) return acc + parseInt(data.point, 10);
+    return acc;
+  }, 0);
 
   const average = velocityAverageHelper(sprints);
   const chartDatas = chartDataHelper(average, totalPoint);
