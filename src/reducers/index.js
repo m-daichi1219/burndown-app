@@ -1,104 +1,9 @@
 import {
   EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT, DELETE_SPRINT,
 } from '../constants/action-types';
+import initialState from '../constants/initial-state';
 
-const initialState = {
-  // TEST DATA
-  datas: [
-    {
-      title: 'title1', point: '12', sprint: '1', id: 'data1',
-    },
-    {
-      title: 'title2', point: '8', sprint: '2', id: 'data2',
-    },
-    {
-      title: 'title3', point: '13', sprint: '2', id: 'data3',
-    },
-    {
-      title: 'title4', point: '22', sprint: '', id: 'data4',
-    },
-    {
-      title: 'title5', point: '14', sprint: '', id: 'data5',
-    },
-    {
-      title: 'title6', point: '12', sprint: '', id: 'data6',
-    },
-    {
-      title: 'title7', point: '8', sprint: '', id: 'data7',
-    },
-    {
-      title: 'title8', point: '13', sprint: '', id: 'data8',
-    },
-    {
-      title: 'title9', point: '22', sprint: '', id: 'data9',
-    },
-    {
-      title: 'title10', point: '14', sprint: '', id: 'data10',
-    },
-  ],
-  sprints: [
-    {
-      id: 'id1',
-      velocity: '12',
-    },
-    {
-      id: 'id2',
-      velocity: '10',
-    },
-    {
-      id: 'id3',
-      velocity: '13',
-    },
-    {
-      id: 'id4',
-      velocity: '16',
-    },
-    {
-      id: 'id5',
-      velocity: '15',
-    },
-    {
-      id: 'id6',
-      velocity: '12',
-    },
-    {
-      id: 'id7',
-      velocity: '13',
-    },
-    {
-      id: 'id8',
-      velocity: '',
-    },
-    {
-      id: 'id9',
-      velocity: '',
-    },
-    {
-      id: 'id10',
-      velocity: '',
-    },
-    {
-      id: 'id11',
-      velocity: '',
-    },
-    {
-      id: 'id12',
-      velocity: '',
-    },
-    {
-      id: 'id13',
-      velocity: '',
-    },
-    {
-      id: 'id14',
-      velocity: '',
-    },
-    {
-      id: 'id15',
-      velocity: '',
-    },
-  ],
-};
+const init = initialState;
 
 // taskの配列にidを振りなおすヘルパー関数
 const setTaskIDHelper = (array) => Object.assign([], array.map((data, index) => {
@@ -106,7 +11,7 @@ const setTaskIDHelper = (array) => Object.assign([], array.map((data, index) => 
   return { ...data, id: `data${id}` };
 }));
 
-function rootReducer(state = initialState, action) {
+function rootReducer(state = init, action) {
   // タスク編集時
   if (action.type === EDIT_TASK) {
     return {
@@ -156,7 +61,7 @@ function rootReducer(state = initialState, action) {
     return {
       ...state,
       sprints: Object.assign([], state.sprints.concat({
-        id: `id${state.sprints.length}`,
+        id: `id${state.sprints.length + 1}`,
         velocity: '',
       })),
     };
