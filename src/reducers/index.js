@@ -6,34 +6,34 @@ const initialState = {
   // TEST DATA
   datas: [
     {
-      title: 'title1', point: '12', endDate: '2019-12-21', id: 'data1',
+      title: 'title1', point: '12', sprint: '1', id: 'data1',
     },
     {
-      title: 'title2', point: '8', endDate: '2019-12-22', id: 'data2',
+      title: 'title2', point: '8', sprint: '2', id: 'data2',
     },
     {
-      title: 'title3', point: '13', endDate: '2019-12-23', id: 'data3',
+      title: 'title3', point: '13', sprint: '2', id: 'data3',
     },
     {
-      title: 'title4', point: '22', endDate: '2019-12-24', id: 'data4',
+      title: 'title4', point: '22', sprint: '', id: 'data4',
     },
     {
-      title: 'title5', point: '14', endDate: '2019-12-25', id: 'data5',
+      title: 'title5', point: '14', sprint: '', id: 'data5',
     },
     {
-      title: 'title6', point: '12', endDate: '2019-12-21', id: 'data6',
+      title: 'title6', point: '12', sprint: '', id: 'data6',
     },
     {
-      title: 'title7', point: '8', endDate: '2019-12-22', id: 'data7',
+      title: 'title7', point: '8', sprint: '', id: 'data7',
     },
     {
-      title: 'title8', point: '13', endDate: '2019-12-23', id: 'data8',
+      title: 'title8', point: '13', sprint: '', id: 'data8',
     },
     {
-      title: 'title9', point: '22', endDate: '2019-12-24', id: 'data9',
+      title: 'title9', point: '22', sprint: '', id: 'data9',
     },
     {
-      title: 'title10', point: '14', endDate: '2019-12-25', id: 'data10',
+      title: 'title10', point: '14', sprint: '', id: 'data10',
     },
   ],
   sprints: [
@@ -102,7 +102,7 @@ const initialState = {
 
 // taskの配列にidを振りなおすヘルパー関数
 const setTaskIDHelper = (array) => Object.assign([], array.map((data, index) => {
-  const id = index;
+  const id = index + 1;
   return { ...data, id: `data${id}` };
 }));
 
@@ -133,7 +133,7 @@ function rootReducer(state = initialState, action) {
     return {
       ...state,
       datas: setTaskIDHelper(state.datas.concat({
-        title: '', point: '', endDate: '', id: '',
+        title: '', point: '', sprint: '', id: '',
       })),
     };
   }
