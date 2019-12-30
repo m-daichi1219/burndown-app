@@ -30,7 +30,7 @@ const chartDataHelper = (average, totalPoint, datas) => {
     }
   });
 
-  while (true) {
+  for (;;) {
     if (remainingTaskPoint - average < 0) {
       chartDatas.push(0);
       break;
