@@ -18,18 +18,27 @@ const velocityAverageHelper = (sprints) => {
   return average;
 };
 
-const chartDataHelper = (average, totalPoint) => {
+const chartDataHelper = (average, totalPoint, datas) => {
   const chartDatas = [];
-  let t = totalPoint;
-  while (true) {
-    chartDatas.push(t);
+  chartDatas.push(totalPoint);
 
-    if (t - average < 0) {
+  let remainingTaskPoint = totalPoint;
+  datas.forEach((data) => {
+    if (data.sprint !== '') {
+      remainingTaskPoint -= data.point;
+      chartDatas[data.sprint] = remainingTaskPoint;
+    }
+  });
+
+  while (true) {
+    if (remainingTaskPoint - average < 0) {
       chartDatas.push(0);
       break;
     }
 
-    t -= average;
+    remainingTaskPoint -= average;
+
+    chartDatas.push(remainingTaskPoint);
   }
 
   return chartDatas;
@@ -48,9 +57,7 @@ const AppLineChart = () => {
   }, 0);
 
   const average = velocityAverageHelper(sprints);
-  const chartDatas = chartDataHelper(average, totalPoint);
-
-  // TODO: chart datas(actual)
+  const chartDatas = chartDataHelper(average, totalPoint, datas);
 
   const data = {
     labels,
