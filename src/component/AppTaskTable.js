@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { EDIT_TASK, DELETE_TASK } from '../constants/action-types';
-import '../css/AppTableRow.css';
+import '../css/AppTaskTable.css';
 
-const AppTableRow = (props) => {
+const AppTaskTable = (props) => {
   const { task } = props;
   const sprints = useSelector((state) => state.sprints);
   const dispatch = useDispatch();
@@ -43,13 +43,13 @@ const AppTableRow = (props) => {
   );
 };
 
-// const AppTableRow = ({ rowData }) => {
+// const AppTaskTable = ({ rowData }) => {
 //   const {
 //     title, point, endDate, id,
 //   } = rowData;
 // };
 
-AppTableRow.propTypes = {
+AppTaskTable.propTypes = {
   task: PropTypes.shape({
     title: PropTypes.string.isRequired,
     point: PropTypes.string.isRequired,
@@ -58,4 +58,4 @@ AppTableRow.propTypes = {
   }).isRequired,
 };
 
-export default AppTableRow;
+export default AppTaskTable;

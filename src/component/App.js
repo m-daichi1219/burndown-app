@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import AppTableRow from './AppTableRow';
+import AppTaskTable from './AppTaskTable';
 import AppTableCol from './AppTableCol';
 import AppLineChart from './AppLineChart';
 import { ADD_TASK } from '../constants/action-types';
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="task-area">
-        {rowDatas.map((rowData) => <AppTableRow id="tablerow" key={rowData.id} task={rowData} />)}
+        {rowDatas.map((rowData) => <AppTaskTable id="tablerow" key={rowData.id} task={rowData} />)}
         <button type="button" name="add-button" onClick={addTask}>タスクを追加</button>
       </div>
       <div className="chart-area">
