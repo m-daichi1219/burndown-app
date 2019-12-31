@@ -1,13 +1,17 @@
 .app-task-table {
+  height: 42vw;
+  overflow-y: scroll;
+  white-space: nowrap;
+}
+
+.app-table-row {
   display: table;
   width: 100%;
-  border-bottom: solid 1px;
   height: 2.8vw;
 }
 
 .cell {
   display: table-cell;
-  border-right: solid 1px;
   width: 30%;
   text-align: center;
 }
