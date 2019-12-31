@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AppTaskTable from './AppTaskTable';
-import AppTableCol from './AppTableCol';
+import AppSprintTable from './AppSprintTable';
 import AppLineChart from './AppLineChart';
 import { ADD_TASK } from '../constants/action-types';
 import '../css/App.css';
@@ -24,7 +24,7 @@ const App = () => {
         <AppLineChart />
       </div>
       <div className="sprint-area">
-        <AppTableCol />
+        <AppSprintTable />
       </div>
     </div>
   );

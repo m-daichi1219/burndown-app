@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { EDIT_VELOCITY, ADD_SPRINT, DELETE_SPRINT } from '../constants/action-types';
-import '../css/AppTableCol.css';
+import '../css/AppSprintTable.css';
 
-const AppTableCol = () => {
+const AppSprintTable = () => {
   const sprints = useSelector((state) => state.sprints);
   const dispatch = useDispatch();
 
@@ -39,4 +39,4 @@ const AppTableCol = () => {
   );
 };
 
-export default AppTableCol;
+export default AppSprintTable;
