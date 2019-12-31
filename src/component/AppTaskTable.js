@@ -32,7 +32,6 @@ const AppTaskTable = (props) => {
         <input type="number" id="point" value={task.point} onChange={handleChange} />
       </div>
       <div className="cell">
-        {/* <input type="date" id="endDate" value={task.endDate} onChange={handleChange} /> */}
         <select id="sprint" onChange={handleChange} value={task.sprint}>
           <option value=""> </option>
           {sprints.map((sprint, index) => (<option value={index + 1} key={sprint.id}>{`Sprint${index + 1}`}</option>))}
@@ -42,12 +41,6 @@ const AppTaskTable = (props) => {
     </div>
   );
 };
-
-// const AppTaskTable = ({ rowData }) => {
-//   const {
-//     title, point, endDate, id,
-//   } = rowData;
-// };
 
 AppTaskTable.propTypes = {
   task: PropTypes.shape({
