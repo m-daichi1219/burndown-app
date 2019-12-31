@@ -25,7 +25,7 @@ const AppSprintTable = () => {
 
   return (
     <>
-      <div className="app-table-col">
+      <div className="app-sprint-sable">
         {sprints.map((sprint, index) => (
           <div className="col" id="col" key={sprint.id}>
             <p>{`Sprint${index}`}</p>

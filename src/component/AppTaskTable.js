@@ -24,7 +24,7 @@ const AppTaskTable = (props) => {
   };
 
   return (
-    <div draggable="true" className="row" id={task.id}>
+    <div draggable="true" className="app-task-table" id={task.id}>
       <div className="cell">
         <input type="text" id="title" value={task.title} onChange={handleChange} />
       </div>
