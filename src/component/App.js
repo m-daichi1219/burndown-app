@@ -20,10 +20,10 @@ const App = () => {
         {rowDatas.map((rowData) => <AppTableRow id="tablerow" key={rowData.id} task={rowData} />)}
         <button type="button" name="add-button" onClick={addTask}>タスクを追加</button>
       </div>
-      <div className="task-area">
+      <div className="chart-area">
         <AppLineChart />
       </div>
-      <div className="task-area">
+      <div className="sprint-area">
         <AppTableCol />
       </div>
     </div>
