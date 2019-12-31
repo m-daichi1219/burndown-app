@@ -18,7 +18,7 @@ const AppTaskTable = () => {
 
   const handleDelete = (event) => {
     const payload = {};
-    payload.id = event.target.parentNode.id;
+    payload.id = event.target.parentNode.parentNode.id;
     dispatch({ type: DELETE_TASK, payload });
   };
 
@@ -26,11 +26,10 @@ const AppTaskTable = () => {
     dispatch({ type: ADD_TASK });
   };
 
-
   return (
     <>
       <div className="app-task-table">
-        <div className="app-table-row">
+        <div className="app-table-header">
           <div className="cell">
             タスク名
           </div>
@@ -44,25 +43,31 @@ const AppTaskTable = () => {
             削除
           </div>
         </div>
-        {tasks.map((task) => (
-          <div draggable="true" className="app-table-row" id={task.id} key={task.id}>
-            <div className="cell">
-              <input type="text" id="title" value={task.title} onChange={handleChange} />
+        <div className="app-table-body">
+          {tasks.map((task) => (
+            <div draggable="true" className="app-table-row" id={task.id} key={task.id}>
+              <div className="cell">
+                <input type="text" id="title" value={task.title} onChange={handleChange} />
+              </div>
+              <div className="cell">
+                <input type="number" id="point" value={task.point} onChange={handleChange} />
+              </div>
+              <div className="cell">
+                <select id="sprint" onChange={handleChange} value={task.sprint}>
+                  <option value=""> </option>
+                  {sprints.map((sprint, index) => (<option value={index + 1} key={sprint.id}>{`Sprint${index + 1}`}</option>))}
+                </select>
+              </div>
+              <div className="cell">
+                <button type="button" onClick={handleDelete}>削除</button>
+              </div>
             </div>
-            <div className="cell">
-              <input type="number" id="point" value={task.point} onChange={handleChange} />
-            </div>
-            <div className="cell">
-              <select id="sprint" onChange={handleChange} value={task.sprint}>
-                <option value=""> </option>
-                {sprints.map((sprint, index) => (<option value={index + 1} key={sprint.id}>{`Sprint${index + 1}`}</option>))}
-              </select>
-            </div>
-            <button type="button" onClick={handleDelete}>削除</button>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="app-table-footer">
+          <button type="button" name="add-button" onClick={handleClick}>タスクを追加</button>
+        </div>
       </div>
-      <button type="button" name="add-button" onClick={handleClick}>タスクを追加</button>
     </>
   );
 };
