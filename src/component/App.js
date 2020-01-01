@@ -7,7 +7,6 @@ import '../css/App.css';
 const App = () => (
   <div className="App">
     <div className="task-area">
-      {/* {rowDatas.map((rowData) => <AppTaskTable id="tablerow" key={rowData.id} task={rowData} />)} */}
       <AppTaskTable />
     </div>
     <div className="chart-area">
