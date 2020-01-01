@@ -34,7 +34,7 @@ const AppSprintTable = () => {
         ))}
       </div>
       <button type="button" onClick={addSprint}>Sprintを追加</button>
-      <button type="button" onClick={deleteSprint}>Sprintを減らす</button>
+      <button type="button" onClick={deleteSprint} disabled={sprints.length < 5}>Sprintを減らす</button>
     </>
   );
 };
