@@ -1,6 +1,6 @@
 .app-sprint-table {
   overflow-x: auto;
-  height: 6rem;
+  height: 100px;
   white-space: nowrap;
 }
 
