@@ -1,8 +1,7 @@
 import React from 'react';
+// import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import AppTaskTable from './AppTaskTable';
-import AppSprintTable from './AppSprintTable';
-import AppLineChart from './AppLineChart';
+import AppBurnDownView from './AppBurnDownView';
 import '../css/App.css';
 
 const App = () => (
@@ -12,15 +11,7 @@ const App = () => (
       <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
       <title>BurnDown App</title>
     </Helmet>
-    <div className="task-area">
-      <AppTaskTable />
-    </div>
-    <div className="chart-area">
-      <AppLineChart />
-    </div>
-    <div className="sprint-area">
-      <AppSprintTable />
-    </div>
+    <AppBurnDownView />
   </div>
 );
 
