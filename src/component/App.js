@@ -17,6 +17,7 @@ const App = () => (
     <Router>
       <header>
         <Link to="/burndown">BurnDown</Link>
+        |
         <Link to="/velocity">Velocity</Link>
       </header>
       <Switch>
