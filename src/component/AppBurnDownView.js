@@ -2,10 +2,10 @@ import React from 'react';
 import AppTaskTable from './AppTaskTable';
 import AppSprintTable from './AppSprintTable';
 import AppLineChart from './AppLineChart';
-import '../css/App.css';
+import '../css/AppBurnDownView.css';
 
 const AppBurnDownView = () => (
-  <>
+  <div className="burndown-layout">
     <div className="task-area">
       <AppTaskTable />
     </div>
@@ -15,7 +15,7 @@ const AppBurnDownView = () => (
     <div className="sprint-area">
       <AppSprintTable />
     </div>
-  </>
+  </div>
 );
 
 export default AppBurnDownView;
