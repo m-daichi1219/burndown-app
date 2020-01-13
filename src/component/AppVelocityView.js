@@ -30,9 +30,6 @@ const AppVelocityView = () => {
     payload.id = event.target.parentNode.parentNode.id;
     payload[event.target.id] = event.target.value;
 
-    console.log('--handleChange:payload--');
-    console.log(payload);
-    console.log('------------------------');
     dispatch({ type: EDIT_VELOCITY, payload });
   };
 
