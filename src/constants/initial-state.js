@@ -2,40 +2,40 @@ const initialState = {
   // TEST DATA
   datas: [
     {
-      title: '設計', point: '12', sprint: '1', id: 'data1',
+      title: '設計', point: '12', sprint: '1', id: 'data1', tag: 'draggable-yellow',
     },
     {
-      title: '開発環境の準備', point: '8', sprint: '2', id: 'data2',
+      title: '開発環境の準備', point: '8', sprint: '2', id: 'data2', tag: 'draggable-yellow',
     },
     {
-      title: 'ログインページ作成', point: '13', sprint: '3', id: 'data3',
+      title: 'ログインページ作成', point: '13', sprint: '3', id: 'data3', tag: 'draggable-yellow',
     },
     {
-      title: '認証処理の実装(フロント）', point: '8', sprint: '4', id: 'data4',
+      title: '認証処理の実装(フロント）', point: '8', sprint: '4', id: 'data4', tag: 'draggable-green',
     },
     {
-      title: '認証処理の実装（バックエンド）', point: '14', sprint: '5', id: 'data5',
+      title: '認証処理の実装（バックエンド）', point: '14', sprint: '5', id: 'data5', tag: 'draggable-green',
     },
     {
-      title: 'ユーザーページ作成', point: '14', sprint: '', id: 'data6',
+      title: 'ユーザーページ作成', point: '14', sprint: '', id: 'data6', tag: 'draggable-green',
     },
     {
-      title: 'フレンドページ作成', point: '12', sprint: '', id: 'data7',
+      title: 'フレンドページ作成', point: '12', sprint: '', id: 'data7', tag: 'draggable-blue',
     },
     {
-      title: 'フレンド機能の実装', point: '8', sprint: '', id: 'data8',
+      title: 'フレンド機能の実装', point: '8', sprint: '', id: 'data8', tag: 'draggable-blue',
     },
     {
-      title: '問い合わせページ作成', point: '13', sprint: '', id: 'data9',
+      title: '問い合わせページ作成', point: '13', sprint: '', id: 'data9', tag: 'draggable-blue',
     },
     {
-      title: '問い合わせ機能の実装', point: '22', sprint: '', id: 'data10',
+      title: '問い合わせ機能の実装', point: '22', sprint: '', id: 'data10', tag: 'draggable-gray',
     },
     {
-      title: 'ログアウト機能の実装', point: '14', sprint: '', id: 'data11',
+      title: 'ログアウト機能の実装', point: '14', sprint: '', id: 'data11', tag: 'draggable-gray',
     },
     {
-      title: '', point: '', sprint: '', id: 'data12',
+      title: '', point: '', sprint: '', id: 'data12', tag: '',
     },
   ],
   sprints: [
