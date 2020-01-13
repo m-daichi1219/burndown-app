@@ -1,0 +1,10 @@
+.task-board {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 50px 25px;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  background-color: white;
+}

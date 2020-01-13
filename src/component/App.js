@@ -5,6 +5,7 @@ import {
 import Helmet from 'react-helmet';
 import AppBurnDownView from './AppBurnDownView';
 import AppVelocityView from './AppVelocityView';
+import AppTaskBoardView from './AppTaskBoardView';
 import '../css/App.css';
 
 const App = () => (
@@ -19,6 +20,8 @@ const App = () => (
         <Link to="/burndown">BurnDown</Link>
         |
         <Link to="/velocity">Velocity</Link>
+        |
+        <Link to="/taskboard">TaskBoard</Link>
       </header>
       <Switch>
         <Route exact path="/">
@@ -29,6 +32,9 @@ const App = () => (
         </Route>
         <Route path="/velocity">
           <AppVelocityView />
+        </Route>
+        <Route path="/taskboard">
+          <AppTaskBoardView />
         </Route>
         <Route path="/*">
           <p>404</p>
