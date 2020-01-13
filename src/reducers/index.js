@@ -1,5 +1,6 @@
 import {
-  EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT, DELETE_SPRINT,
+  EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT,
+  DELETE_SPRINT, EDIT_NORMARIZED_VELOCITY,
 } from '../constants/action-types';
 import initialState from '../constants/initial-state';
 
@@ -73,6 +74,11 @@ function rootReducer(state = init, action) {
       ...state,
       sprints: Object.assign([], state.sprints.slice(0, state.sprints.length - 1)),
     };
+  }
+
+  // Normarized Velocity算出時
+  if (action.type === EDIT_NORMARIZED_VELOCITY) {
+    state.sprints.splice(action.payload.index, 1, action.payload.sprint);
   }
 
   // 初期表示
