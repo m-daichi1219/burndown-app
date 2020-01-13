@@ -39,7 +39,7 @@ function rootReducer(state = init, action) {
     return {
       ...state,
       datas: setTaskIDHelper(state.datas.concat({
-        title: '', point: '', sprint: '', id: '',
+        title: '', point: '', sprint: '', id: '', tag: 'draggable-yellow',
       })),
     };
   }

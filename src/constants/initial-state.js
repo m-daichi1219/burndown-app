@@ -35,7 +35,7 @@ const initialState = {
       title: 'ログアウト機能の実装', point: '14', sprint: '', id: 'data11', tag: 'draggable-gray',
     },
     {
-      title: '', point: '', sprint: '', id: 'data12', tag: '',
+      title: '', point: '', sprint: '', id: 'data12', tag: 'draggable-yellow',
     },
   ],
   sprints: [
