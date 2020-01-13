@@ -8,3 +8,39 @@
   z-index: -1;
   background-color: white;
 }
+
+.draggable-yellow {
+  border: 1px solid gray;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #fff7d1;
+}
+
+.draggable-green {
+  border: 1px solid gray;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #e4f9e0;
+}
+
+.draggable-blue {
+  border: 1px solid gray;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #e2f1ff;
+}
+
+.draggable-gray {
+  border: 1px solid gray;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #f3f2f1;
+}
