@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import Draggable from 'react-draggable';
 import '../css/AppTaskBoardView.css';
 
+// TODO: position setting
+
 const AppTaskBoardView = () => {
   const tasks = useSelector((state) => state.datas);
 
@@ -27,7 +29,7 @@ const AppTaskBoardView = () => {
   return (
     <div className="task-board">
       {tasks.map((task) => (
-        <Draggable>
+        <Draggable key={task.id}>
           <div key={task.id} className={task.tag}>
             {task.title}
           </div>
