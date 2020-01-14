@@ -3,24 +3,39 @@ import { useSelector, useDispatch } from 'react-redux';
 import { EDIT_NORMARIZED_VELOCITY, EDIT_VELOCITY } from '../constants/action-types';
 import '../css/AppVelocityView.css';
 
-// TODO:NormarizedVelocity is averaged over the last 3 sprints
-
 const AppVelocityView = () => {
   const sprints = useSelector((state) => state.sprints);
   const dispatch = useDispatch();
 
   const calcPlanningPoint = (index) => {
     if (index === 0) return 0;
-    return sprints[index - 1].normarizedVelocity * sprints[index].planningCapacity;
+    return Math.round((sprints[index - 1].normarizedVelocity
+      * sprints[index].planningCapacity) * 100) / 100;
   };
 
   const calcNormarizedVelocity = (sprint, index) => {
-    if (!sprint.velocity || !sprint.resultCapacity) return 'Not set Velocity or ResultCapacity';
+    if (!sprint.velocity || !sprint.resultCapacity) return '';
 
-    const normarizedVelocity = Math.round(sprint.velocity
+    let normarizedVelocity = Math.round(sprint.velocity
       * (10 / sprint.resultCapacity) * 10) / 100;
-    const payload = { sprint: { ...sprint, normarizedVelocity }, index };
+    if (index !== 0) {
+      let addCnt = 0;
+      const slicedSprints = sprints.slice(0, index);
+      const addNormarized = slicedSprints.reduce((acc, slicedSprint) => {
+        if (addCnt === 2) return acc;
+        if (slicedSprint.normarizedVelocity) {
+          addCnt += 1;
+          return acc + slicedSprint.normarizedVelocity;
+        }
+        return acc;
+      }, 0);
 
+      normarizedVelocity = Math.round(((addNormarized + normarizedVelocity)
+        / (addCnt + 1)) * 100) / 100;
+      addCnt = 0;
+    }
+
+    const payload = { sprint: { ...sprint, normarizedVelocity }, index };
     dispatch({ type: EDIT_NORMARIZED_VELOCITY, payload });
     return normarizedVelocity;
   };
@@ -71,9 +86,7 @@ const AppVelocityView = () => {
               <input type="date" value={sprint.end} readOnly />
             </div>
             <div className="cell">
-              <p>
-                {`Sprint${index}`}
-              </p>
+              {`Sprint${index}`}
             </div>
             <div className="cell">
               {calcPlanningPoint(index)}
@@ -82,7 +95,7 @@ const AppVelocityView = () => {
               <input type="number" step="0.01" id="planningCapacity" value={Number(sprint.planningCapacity)} onChange={handleChange} />
             </div>
             <div className="cell">
-              <p>{sprint.velocity}</p>
+              {sprint.velocity}
             </div>
             <div className="cell">
               <input type="number" step="0.01" id="resultCapacity" value={Number(sprint.resultCapacity)} onChange={handleChange} />
