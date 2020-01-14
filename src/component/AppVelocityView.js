@@ -80,10 +80,10 @@ const AppVelocityView = () => {
         {sprints.map((sprint, index) => (
           <div className="app-table-row" id={sprint.id} key={sprint.id}>
             <div className="cell">
-              <input type="date" value={sprint.start} readOnly />
+              <input type="date" id="start" value={sprint.start} onChange={handleChange} />
             </div>
             <div className="cell">
-              <input type="date" value={sprint.end} readOnly />
+              <input type="date" id="end" value={sprint.end} onChange={handleChange} />
             </div>
             <div className="cell">
               {`Sprint${index}`}
