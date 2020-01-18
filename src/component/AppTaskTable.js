@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ADD_TASK, EDIT_TASK, DELETE_TASK } from '../constants/action-types';
+import COLORS from '../constants/tag-colors';
 import '../css/AppTaskTable.css';
 
 const AppTaskTable = () => {
@@ -40,6 +41,9 @@ const AppTaskTable = () => {
             完了Sprint
           </div>
           <div className="cell">
+            色
+          </div>
+          <div className="cell">
             削除
           </div>
         </div>
@@ -55,7 +59,14 @@ const AppTaskTable = () => {
               <div className="cell">
                 <select id="sprint" onChange={handleChange} value={task.sprint}>
                   <option value=""> </option>
-                  {sprints.map((sprint, index) => (<option value={index + 1} key={sprint.id}>{`Sprint${index + 1}`}</option>))}
+                  {sprints.map((sprint, index) => (
+                    <option value={index + 1} key={sprint.id}>{`Sprint${index + 1}`}</option>))}
+                </select>
+              </div>
+              <div className="cell">
+                <select id="tag" onChange={handleChange} value={task.tag}>
+                  {COLORS.map((color) => (
+                    <option value={color.tag} key={color.tag}>{color.name}</option>))}
                 </select>
               </div>
               <div className="cell">
