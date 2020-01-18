@@ -26,6 +26,7 @@ button {
   padding: 5px 10px;
   transition: opacity 0.15s;
   cursor: pointer;
+  letter-spacing: 1px;
 }
 
 button:hover {
