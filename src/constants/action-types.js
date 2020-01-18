@@ -4,4 +4,3 @@ export const ADD_TASK = 'ADD_TASK';
 export const EDIT_VELOCITY = 'EDIT_VELOCITY';
 export const ADD_SPRINT = 'ADD_SPRINT';
 export const DELETE_SPRINT = 'DELETE_SPRINT';
-export const EDIT_NORMARIZED_VELOCITY = 'EDIT_NORMARIZED_VELOCITY';
