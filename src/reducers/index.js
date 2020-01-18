@@ -2,7 +2,7 @@ import {
   EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT,
   DELETE_SPRINT,
 } from '../constants/action-types';
-import initialState from '../constants/initial-state';
+import { initialData, initialState } from '../constants/initial-state';
 
 const init = initialState;
 
@@ -38,9 +38,7 @@ function rootReducer(state = init, action) {
   if (action.type === ADD_TASK) {
     return {
       ...state,
-      datas: setTaskIDHelper(state.datas.concat({
-        title: '', point: '', sprint: '', id: '', tag: 'draggable-yellow',
-      })),
+      datas: setTaskIDHelper(state.datas.concat(initialData)),
     };
   }
 
