@@ -76,11 +76,6 @@ function rootReducer(state = init, action) {
     };
   }
 
-  // Normarized Velocity算出時
-  if (action.type === EDIT_NORMARIZED_VELOCITY) {
-    state.sprints.splice(action.payload.index, 1, action.payload.sprint);
-  }
-
   // 初期表示
   return state;
 }
