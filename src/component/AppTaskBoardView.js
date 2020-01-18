@@ -1,36 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Draggable from 'react-draggable';
+import { EDIT_TASK } from '../constants/action-types';
 import '../css/AppTaskBoardView.css';
 
 // TODO: position setting
 
 const AppTaskBoardView = () => {
   const tasks = useSelector((state) => state.datas);
+  const dispatch = useDispatch();
 
-  // const onStart = (e, data) => {
-  //   console.log('onStart!');
-  //   console.log(e);
-  //   console.log(data);
-  // };
+  const onStop = (e, data) => {
+    const { x, y } = data;
+    const payload = {
+      id: e.target.id,
+      position: { x, y },
+    };
 
-  // const onDrag = (e, data) => {
-  //   console.log('onDrag!');
-  //   console.log(e);
-  //   console.log(data);
-  // };
-
-  // const onStop = (e, data) => {
-  //   console.log('onStop!');
-  //   console.log(e);
-  //   console.log(data);
-  // };
+    dispatch({ type: EDIT_TASK, payload });
+  };
 
   return (
     <div className="task-board">
       {tasks.map((task) => (
-        <Draggable key={task.id}>
-          <div key={task.id} className={task.tag}>
+        <Draggable key={task.id} defaultPosition={task.position} onStop={onStop}>
+          <div id={task.id} key={task.id} className={task.tag}>
             {task.title}
           </div>
         </Draggable>
