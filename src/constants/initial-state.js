@@ -46,8 +46,6 @@ const initialState = {
       planningCapacity: '1.00',
       resultCapacity: '0.90',
       velocity: '31',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id1',
@@ -56,8 +54,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '28',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id2',
@@ -66,8 +62,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '40',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id3',
@@ -76,8 +70,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '22',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id4',
@@ -86,8 +78,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '42',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id5',
@@ -96,8 +86,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '33',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id6',
@@ -106,8 +94,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '34',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id7',
@@ -116,8 +102,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '46',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id8',
@@ -126,8 +110,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '42',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id9',
@@ -136,8 +118,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '28',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
     {
       id: 'id10',
@@ -146,8 +126,6 @@ const initialState = {
       planningCapacity: '',
       resultCapacity: '',
       velocity: '',
-      normarizedVelocity: '',
-      averageVelocity: '',
     },
   ],
 };
