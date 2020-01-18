@@ -1,43 +1,52 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { EDIT_NORMARIZED_VELOCITY, EDIT_VELOCITY } from '../constants/action-types';
+import { EDIT_VELOCITY } from '../constants/action-types';
 import '../css/AppVelocityView.css';
 
 const AppVelocityView = () => {
   const sprints = useSelector((state) => state.sprints);
   const dispatch = useDispatch();
 
-  const calcPlanningPoint = (index) => {
-    if (index === 0) return 0;
-    return Math.round((sprints[index - 1].normarizedVelocity
-      * sprints[index].planningCapacity) * 100) / 100;
-  };
 
-  const calcNormarizedVelocity = (sprint, index) => {
-    if (!sprint.velocity || !sprint.resultCapacity) return '';
+  const calcNormarizedVelocity = (sprint) => {
+    let normarizedVelocity = '';
 
-    let normarizedVelocity = Math.round(sprint.velocity
-      * (10 / sprint.resultCapacity) * 10) / 100;
-    if (index !== 0) {
-      let addCnt = 0;
-      const slicedSprints = sprints.slice(0, index);
-      const addNormarized = slicedSprints.reduce((acc, slicedSprint) => {
-        if (addCnt === 2) return acc;
-        if (slicedSprint.normarizedVelocity) {
-          addCnt += 1;
-          return acc + slicedSprint.normarizedVelocity;
-        }
-        return acc;
-      }, 0);
-
-      normarizedVelocity = Math.round(((addNormarized + normarizedVelocity)
-        / (addCnt + 1)) * 100) / 100;
-      addCnt = 0;
+    if (sprint.velocity || sprint.resultCapacity) {
+      normarizedVelocity = Math.round(sprint.velocity
+        * (10 / sprint.resultCapacity) * 10) / 100;
     }
 
-    const payload = { sprint: { ...sprint, normarizedVelocity }, index };
-    dispatch({ type: EDIT_NORMARIZED_VELOCITY, payload });
-    return normarizedVelocity;
+    return Number.isFinite(normarizedVelocity) ? normarizedVelocity : '';
+  };
+
+  const calcAverageVelocity = (sprint, index) => {
+    if (!sprint.velocity || !sprint.resultCapacity) return '';
+
+    const normarizedVelocity = calcNormarizedVelocity(sprint);
+    let averageVelocity;
+    if (index !== 0) {
+      let addCnt = 0;
+      const slicedSprints = sprints.slice(0, index).reverse();
+      const addNormarized = slicedSprints.reduce((acc, slicedSprint) => {
+        if (addCnt === 2) return acc;
+
+        addCnt += 1;
+        return acc + calcNormarizedVelocity(slicedSprint);
+      }, 0);
+      averageVelocity = Math.round(((addNormarized + normarizedVelocity)
+        / (addCnt + 1)) * 100) / 100;
+      addCnt = 0;
+    } else {
+      averageVelocity = normarizedVelocity;
+    }
+
+    return averageVelocity;
+  };
+
+  const calcPlanningPoint = (index) => {
+    if (index === 0) return 0;
+    const average = calcAverageVelocity(sprints[index - 1], index - 1);
+    return Math.round((average * sprints[index].planningCapacity) * 100) / 100;
   };
 
   const handleChange = (event) => {
@@ -75,6 +84,9 @@ const AppVelocityView = () => {
         <div className="cell">
           NormarizedVelocity
         </div>
+        <div className="cell">
+          AveregeVelocity
+        </div>
       </div>
       <div className="app-table-body">
         {sprints.map((sprint, index) => (
@@ -102,6 +114,9 @@ const AppVelocityView = () => {
             </div>
             <div className="cell">
               {calcNormarizedVelocity(sprint, index)}
+            </div>
+            <div className="cell">
+              {calcAverageVelocity(sprint, index)}
             </div>
           </div>
         ))}
