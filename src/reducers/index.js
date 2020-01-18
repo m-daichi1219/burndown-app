@@ -1,6 +1,6 @@
 import {
   EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT,
-  DELETE_SPRINT, EDIT_NORMARIZED_VELOCITY,
+  DELETE_SPRINT,
 } from '../constants/action-types';
 import initialState from '../constants/initial-state';
 
