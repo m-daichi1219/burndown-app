@@ -36,7 +36,63 @@
   text-align: center;
 }
 
-input {
+.task-cell {
+  display: flex;
+  vertical-align: middle;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-name-cell {
+  display: flex;
+  vertical-align: middle;
+  height: 100%;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-point-cell {
+  display: flex;
+  vertical-align: middle;
+  height: 100%;
+  width: 20%;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/* input {
   width: 90%;
   text-align: left;
+} */
+
+input {
+  display: block;
+  width: 100%;
+  padding: 4px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: black;
+  margin: 10px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 4px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: black;
+  margin: 10px;
 }

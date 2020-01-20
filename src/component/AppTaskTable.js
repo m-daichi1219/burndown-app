@@ -31,45 +31,45 @@ const AppTaskTable = () => {
     <>
       <div className="app-task-table">
         <div className="app-table-header">
-          <div className="cell">
+          <div className="task-cell">
             タスク名
           </div>
-          <div className="cell">
+          <div className="task-cell">
             ポイント
           </div>
-          <div className="cell">
+          <div className="task-cell">
             完了Sprint
           </div>
-          <div className="cell">
+          <div className="task-cell">
             色
           </div>
-          <div className="cell">
+          <div className="task-cell">
             削除
           </div>
         </div>
         <div className="app-table-body">
           {tasks.map((task) => (
             <div draggable="true" className="app-table-row" id={task.id} key={task.id}>
-              <div className="cell">
+              <div className="task-name-cell">
                 <input type="text" id="title" value={task.title} onChange={handleChange} />
               </div>
-              <div className="cell">
+              <div className="task-point-cell">
                 <input type="number" id="point" value={task.point} onChange={handleChange} />
               </div>
-              <div className="cell">
+              <div className="task-cell">
                 <select id="sprint" onChange={handleChange} value={task.sprint}>
                   <option value=""> </option>
                   {sprints.map((sprint, index) => (
                     <option value={index + 1} key={sprint.id}>{`Sprint${index + 1}`}</option>))}
                 </select>
               </div>
-              <div className="cell">
+              <div className="task-cell">
                 <select id="tag" onChange={handleChange} value={task.tag}>
                   {COLORS.map((color) => (
                     <option value={color.tag} key={color.tag}>{color.name}</option>))}
                 </select>
               </div>
-              <div className="cell">
+              <div className="task-cell">
                 <button type="button" onClick={handleDelete}>削除</button>
               </div>
             </div>
