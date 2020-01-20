@@ -23,22 +23,30 @@ const chartDataHelper = (average, totalPoint, datas) => {
   chartDatas.push(totalPoint);
 
   let remainingTaskPoint = totalPoint;
+  const tmpArr = new Array(datas.length).fill(0);
+  let maxsprint = 0;
   datas.forEach((data) => {
     if (data.sprint !== '') {
-      remainingTaskPoint -= data.point;
-      chartDatas[data.sprint] = remainingTaskPoint;
+      tmpArr[data.sprint] += parseInt(data.point, 10);
+      if (maxsprint < data.sprint) maxsprint = parseInt(data.sprint, 10);
     }
   });
 
-  for (;;) {
+  const subtractArr = tmpArr.slice(0, maxsprint + 1);
+  for (let i = 1; ;i += 1) {
+    if (subtractArr[i]) {
+      const reduce = subtractArr.slice(i, i + 1).reduce((acc, num) => acc + num);
+      remainingTaskPoint -= reduce;
+      chartDatas.push(remainingTaskPoint);
+    } else {
+      remainingTaskPoint -= average;
+      chartDatas.push(remainingTaskPoint);
+    }
+
     if (remainingTaskPoint - average < 0) {
       chartDatas.push(0);
       break;
     }
-
-    remainingTaskPoint -= average;
-
-    chartDatas.push(remainingTaskPoint);
   }
 
   return chartDatas;
