@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Draggable from 'react-draggable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { EDIT_TASK } from '../constants/action-types';
 import '../css/AppTaskBoardView.css';
 
@@ -26,6 +27,12 @@ const AppTaskBoardView = () => {
         <Draggable key={task.id} defaultPosition={task.position} onStop={onStop}>
           <div id={task.id} key={task.id} className={task.tag}>
             {task.title}
+            <div className="point-area">
+              {task.sprint && (
+                <FontAwesomeIcon icon={['far', 'check-circle']} className="check-icon" />
+              )}
+              {task.point}
+            </div>
           </div>
         </Draggable>
       ))}
