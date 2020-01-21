@@ -2,17 +2,21 @@
   position: absolute;
   box-sizing: border-box;
   padding: 50px 25px;
-  top: 0;
   height: 100%;
   width: 100%;
   z-index: -1;
+  white-space: nowrap;
   background-color: white;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .draggable-yellow {
-  position: fixed;
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
   display: grid;
@@ -26,7 +30,7 @@
 }
 
 .draggable-green {
-  position: fixed;
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
   display: block;
@@ -40,7 +44,7 @@
 }
 
 .draggable-blue {
-  position: fixed;
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
   display: inline-block;
@@ -54,7 +58,7 @@
 }
 
 .draggable-gray {
-  position: fixed;
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
   display: inline-block;
