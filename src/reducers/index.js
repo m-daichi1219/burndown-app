@@ -61,6 +61,10 @@ function rootReducer(state = init, action) {
       ...state,
       sprints: Object.assign([], state.sprints.concat({
         id: `id${state.sprints.length + 1}`,
+        start: '',
+        end: '',
+        planningCapacity: '0',
+        resultCapacity: '0',
         velocity: '',
       })),
     };
