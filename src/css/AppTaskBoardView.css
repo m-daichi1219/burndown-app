@@ -2,57 +2,89 @@
   position: absolute;
   box-sizing: border-box;
   padding: 50px 25px;
-  top: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   z-index: -1;
+  white-space: nowrap;
   background-color: white;
+  overflow-x: auto;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .draggable-yellow {
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
-  display: inline-block;
-  width: 100px;
+  display: grid;
+  width: 120px;
   height: 100px;
   white-space: normal;
   text-overflow: ellipsis;
   overflow: hidden;
   background-color: #fff7d1;
+  padding: 10px 10px 30px;
 }
 
 .draggable-green {
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
-  display: inline-block;
-  width: 100px;
+  display: block;
+  width: 120px;
   height: 100px;
   white-space: normal;
   text-overflow: ellipsis;
   overflow: hidden;
   background-color: #e4f9e0;
+  padding: 10px 10px 30px;
 }
 
 .draggable-blue {
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
   display: inline-block;
-  width: 100px;
+  width: 120px;
   height: 100px;
   white-space: normal;
   text-overflow: ellipsis;
   overflow: hidden;
   background-color: #e2f1ff;
+  padding: 10px 10px 30px;
 }
 
 .draggable-gray {
+  position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
   display: inline-block;
-  width: 100px;
+  width: 120px;
   height: 100px;
   white-space: normal;
   text-overflow: ellipsis;
   overflow: hidden;
   background-color: #f3f2f1;
+  padding: 10px 10px 30px;
+}
+
+.point-area {
+  font-weight: bold;
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  right: 10px;
+  letter-spacing: 1px;
+}
+
+.point-area::after {
+  content: 'pt';
+}
+
+.check-icon {
+  color: red;
+  font-size: large;
 }
