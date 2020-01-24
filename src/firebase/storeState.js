@@ -1,8 +1,6 @@
 import { db } from './index';
 
-const mergeState = (initialState, persistedState) => (persistedState
-  ? { ...initialState, ...persistedState }
-  : initialState);
+
 const isArray = Array.isArray || (Array.isArray = function (a) { return `${a}` !== a && {}.toString.call(a) === '[object Array]'; });
 
 const typeOf = (thing) => {
@@ -25,7 +23,6 @@ const getSubset = (obj, paths) => {
 
   return subset;
 };
-
 const createSlicer = (paths) => {
   switch (typeOf(paths)) {
     case 'void':
@@ -44,20 +41,14 @@ export default function storeState(paths, config) {
   const cfg = {
     key: 'redux',
     collectionName: 'items',
-    merge: mergeState,
     slicer: createSlicer,
-    serialize: JSON.stringify,
-    deserialize: JSON.parse,
     ...config,
   };
 
   const {
     key,
     collectionName,
-    merge,
     slicer,
-    serialize,
-    deserialize,
   } = cfg;
 
   return (next) => (reducer, initialState, enhancer) => {
@@ -66,58 +57,42 @@ export default function storeState(paths, config) {
       initialState = undefined;
     }
 
-    let persistedState;
-    let finalInitialState;
-
-    try {
-      persistedState = deserialize(localStorage.getItem(key));
-      finalInitialState = merge(initialState, persistedState);
-    } catch (e) {
-      console.warn('Failed to retrieve initialize state from localStorage:', e);
-    }
-
-    const store = next(reducer, finalInitialState, enhancer);
+    const store = next(reducer, initialState, enhancer);
     const slicerFn = slicer(paths);
 
     // // DBを監視
-    let isUpdate = false;
     let unsubscribe;
     try {
       db.collection(collectionName).doc(key)
         .onSnapshot((doc) => {
           // 変更があった時にデータが返される
-          const { sprints, datas } = doc.data();
+          const { sprints, datas, updatedUid } = doc.data();
           if (sprints && datas) {
-            const payload = { sprints, datas };
-            console.log('sp', sprints);
-            console.log('dt', datas);
-            store.dispatch({ type: 'UPDATE_DATA', payload });
+            const payload = { sprints, datas, updatedUid };
+            const state = store.getState();
 
-            // updateのdispatchを読んだことを明示
-            isUpdate = true;
+            // 自身の更新を再度投げないようにブロック
+            if (updatedUid !== state.loginUser.uid) {
+              store.dispatch({ type: 'UPDATE_DATA', payload });
+            }
           }
-          console.log('Current data: ', doc.data());
         });
     } catch (e) {
       unsubscribe();
-      console.log(e);
+      console.warn(e);
     }
 
     store.subscribe(() => {
       const state = store.getState();
       const subset = slicerFn(state);
-      console.log(store);
 
       try {
-        localStorage.setItem(key, serialize(subset));
-        console.log(state.lastAction);
-        // onSnapshotで変更された値を再度投げないようにブロック
-        if (!isUpdate) {
+        // onSnapshotで変更された値を再度投げないようにブロック = 自身の更新のみDBに入れる
+        if (subset.updatedUid === state.loginUser.uid) {
           db.collection(collectionName).doc(key).set(subset);
         }
-        isUpdate = false;
       } catch (e) {
-        console.warn('Unable to persist state to localStorage:', e);
+        console.warn('Unable to persist state to firestore:', e);
       }
     });
 

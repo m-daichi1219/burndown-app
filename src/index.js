@@ -12,7 +12,8 @@ import App from './component/App';
 
 library.add(fab, fas, far);
 
-function init() {
+function init(uid) {
+  Store.dispatch({ type: 'INIT_USER', payload: { uid } });
   render(
     <Provider store={Store}>
       <App />
@@ -27,10 +28,10 @@ auth.onAuthStateChanged((payload) => {
     loginUi(auth);
     return;
   }
-  // const { uid } = payload;
+  const { uid } = payload;
 
   // 認証していたらレンダリング
-  init();
+  init(uid);
 });
 
 // If you want your app to work offline and load faster, you can change

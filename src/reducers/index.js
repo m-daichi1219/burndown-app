@@ -1,6 +1,6 @@
 import {
   EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT,
-  DELETE_SPRINT, UPDATE_DATA,
+  DELETE_SPRINT, UPDATE_DATA, INIT_USER,
 } from '../constants/action-types';
 import { initialData, initialState } from '../constants/initial-state';
 
@@ -23,6 +23,7 @@ function rootReducer(state = init, action) {
         }
         return data;
       })),
+      updatedUid: state.loginUser.uid,
     };
   }
 
@@ -31,6 +32,7 @@ function rootReducer(state = init, action) {
     return {
       ...state,
       datas: setTaskIDHelper(state.datas.filter((data) => (data.id !== action.payload.id))),
+      updatedUid: state.loginUser.uid,
     };
   }
 
@@ -39,6 +41,7 @@ function rootReducer(state = init, action) {
     return {
       ...state,
       datas: setTaskIDHelper(state.datas.concat(initialData)),
+      updatedUid: state.loginUser.uid,
     };
   }
 
@@ -46,6 +49,7 @@ function rootReducer(state = init, action) {
   if (action.type === EDIT_VELOCITY) {
     return {
       ...state,
+      updatedUid: state.loginUser.uid,
       sprints: Object.assign([], state.sprints.map((sprint) => {
         if (sprint.id === action.payload.id) {
           return { ...sprint, ...action.payload };
@@ -59,6 +63,7 @@ function rootReducer(state = init, action) {
   if (action.type === ADD_SPRINT) {
     return {
       ...state,
+      updatedUid: state.loginUser.uid,
       sprints: Object.assign([], state.sprints.concat({
         id: `id${state.sprints.length + 1}`,
         start: '',
@@ -75,14 +80,28 @@ function rootReducer(state = init, action) {
     return {
       ...state,
       sprints: Object.assign([], state.sprints.slice(0, state.sprints.length - 1)),
+      updatedUid: state.loginUser.uid,
     };
   }
+
+  // firestoreからデータ読込時
   if (action.type === UPDATE_DATA) {
-    console.log('udpate', action.payload);
+    const { sprints, datas, updatedUid } = action.payload;
     return {
       ...state,
-      sprints: action.payload.sprints.map((x) => x),
-      datas: action.payload.datas.map((x) => x),
+      sprints: sprints.map((x) => x),
+      datas: datas.map((x) => x),
+      updatedUid,
+    };
+  }
+
+  // ログインユーザのUIDを保存
+  if (action.type === INIT_USER) {
+    const { uid } = action.payload;
+    return {
+      ...state,
+      loginUser: { uid },
+      updatedUid: uid,
     };
   }
 
