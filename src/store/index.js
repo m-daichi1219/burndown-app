@@ -1,8 +1,15 @@
 import { compose, createStore } from 'redux';
 import persistState from 'redux-localstorage';
 import rootReducer from '../reducers/index';
+import storeState from '../firebase/storeState';
+import { db } from '../firebase/index';
 
-const enhancer = compose(persistState(['datas', 'sprints'], { key: 'burndown-app' }));
+const key = 'burndown-app';
+const collectionName = 'items';
+const enhancer = compose(
+  storeState(['datas', 'sprints'], { key, collectionName }),
+  // persistState(['datas', 'sprints'], { key: 'burndown-app' }),
+);
 
 const store = createStore(rootReducer, enhancer);
 
