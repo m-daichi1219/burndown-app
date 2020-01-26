@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import AppBurnDownView from './AppBurnDownView';
 import AppVelocityView from './AppVelocityView';
 import AppTaskBoardView from './AppTaskBoardView';
+import AppTestView from './AppTestView';
 import '../css/App.css';
 
 const App = () => (
@@ -35,6 +36,9 @@ const App = () => (
         </Route>
         <Route path="/taskboard">
           <AppTaskBoardView />
+        </Route>
+        <Route path="/test">
+          <AppTestView />
         </Route>
         <Route path="/*">
           <p>404</p>
