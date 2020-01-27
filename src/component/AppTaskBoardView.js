@@ -33,22 +33,38 @@ const AppTaskBoardView = () => {
     dispatch({ type: EDIT_TASK, payload });
   };
 
-  const openModal = (event) => {
+  // const openModal = (event) => {
+  //   const payload = {};
+  //   // TODO:set edit modal task for store state
+  //   payload.id = event.target.id;
+  //   setIsOpen(true);
+  // };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleClickEvent = (event) => {
+    console.log(event);
     const payload = {};
     // TODO:set edit modal task for store state
     payload.id = event.target.id;
     setIsOpen(true);
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   return (
     <div className="task-board">
       {tasks.map((task) => (
         <Draggable key={task.id} defaultPosition={task.position} onStop={onStop}>
-          <div id={task.id} key={task.id} className={task.tag}>
+          <div
+            id={task.id}
+            key={task.id}
+            className={task.tag}
+            onClick={handleClickEvent}
+            onKeyDown={handleClickEvent}
+            role="button"
+            tabIndex={0}
+          >
             {task.title}
             <div className="point-area">
               {task.sprint && (
@@ -56,7 +72,6 @@ const AppTaskBoardView = () => {
               )}
               {task.point}
             </div>
-            <button type="button" onClick={openModal}>open</button>
           </div>
         </Draggable>
       ))}
