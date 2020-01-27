@@ -3,11 +3,14 @@ import {
   BrowserRouter as Router, Switch, Route, Link, Redirect,
 } from 'react-router-dom';
 import Helmet from 'react-helmet';
+import Modal from 'react-modal';
 import AppBurnDownView from './AppBurnDownView';
 import AppVelocityView from './AppVelocityView';
 import AppTaskBoardView from './AppTaskBoardView';
 import AppTestView from './AppTestView';
 import '../css/App.css';
+
+Modal.setAppElement('#root');
 
 const App = () => (
   <div className="App">
