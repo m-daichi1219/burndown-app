@@ -1,6 +1,6 @@
 import {
   EDIT_TASK, DELETE_TASK, ADD_TASK, EDIT_VELOCITY, ADD_SPRINT,
-  DELETE_SPRINT,
+  DELETE_SPRINT, SET_CURRENT_TASK,
 } from '../constants/action-types';
 import { initialData, initialState } from '../constants/initial-state';
 
@@ -75,6 +75,14 @@ function rootReducer(state = init, action) {
     return {
       ...state,
       sprints: Object.assign([], state.sprints.slice(0, state.sprints.length - 1)),
+    };
+  }
+
+  // モーダルを開いた時
+  if (action.type === SET_CURRENT_TASK) {
+    return {
+      ...state,
+      currentTask: action.payload,
     };
   }
 

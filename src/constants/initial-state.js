@@ -8,7 +8,7 @@ export const initialData = {
 };
 
 export const initialState = {
-  t: { id: 1, name: 'name' },
+  currentTask: {},
   // TEST DATA
   datas: [
     {

@@ -4,7 +4,7 @@ import Draggable from 'react-draggable';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppModalView from './AppModalView';
-import { EDIT_TASK } from '../constants/action-types';
+import { EDIT_TASK, SET_CURRENT_TASK } from '../constants/action-types';
 import '../css/AppTaskBoardView.css';
 
 const customStyles = {
@@ -42,17 +42,15 @@ const AppTaskBoardView = () => {
     setIsOpen(false);
   };
 
-  const handleClickEvent = (event) => {
-    const payload = {};
-    // TODO:set edit modal task for store state
-    payload.id = event.target.id;
-
+  const handleClickEvent = (task) => {
     if (isDrag) {
       setIsDrag(false);
       return;
     }
 
     // Modal Open if never draggable
+    const payload = task;
+    dispatch({ type: SET_CURRENT_TASK, payload });
     setIsOpen(true);
   };
 
@@ -69,7 +67,7 @@ const AppTaskBoardView = () => {
             id={task.id}
             key={task.id}
             className={task.tag}
-            onClick={handleClickEvent}
+            onClick={() => handleClickEvent(task)}
             onKeyDown={handleClickEvent}
             role="button"
             tabIndex={0}
