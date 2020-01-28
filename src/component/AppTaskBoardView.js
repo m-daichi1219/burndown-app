@@ -21,6 +21,7 @@ const customStyles = {
 const AppTaskBoardView = () => {
   const tasks = useSelector((state) => state.datas);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [isDrag, setIsDrag] = useState(false);
   const dispatch = useDispatch();
 
   const onStop = (e, data) => {
@@ -33,29 +34,37 @@ const AppTaskBoardView = () => {
     dispatch({ type: EDIT_TASK, payload });
   };
 
-  // const openModal = (event) => {
-  //   const payload = {};
-  //   // TODO:set edit modal task for store state
-  //   payload.id = event.target.id;
-  //   setIsOpen(true);
-  // };
+  const onDrag = () => {
+    setIsDrag(true);
+  };
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
   const handleClickEvent = (event) => {
-    console.log(event);
     const payload = {};
     // TODO:set edit modal task for store state
     payload.id = event.target.id;
+
+    if (isDrag) {
+      setIsDrag(false);
+      return;
+    }
+
+    // Modal Open if never draggable
     setIsOpen(true);
   };
 
   return (
     <div className="task-board">
       {tasks.map((task) => (
-        <Draggable key={task.id} defaultPosition={task.position} onStop={onStop}>
+        <Draggable
+          key={task.id}
+          defaultPosition={task.position}
+          onStop={onStop}
+          onDrag={onDrag}
+        >
           <div
             id={task.id}
             key={task.id}
