@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { EDIT_TASK, DELETE_TASK, SET_CURRENT_TASK } from '../constants/action-types';
+import { EDIT_TASK, DELETE_TASK } from '../constants/action-types';
 import COLORS from '../constants/tag-colors';
 
 const AppModalView = () => {
-  const task = useSelector((state) => state.currentTask);
+  // const task = useSelector((state) => state.currentTask);
+  const currentNum = useSelector((state) => state.currentTask);
+  const task = useSelector((state) => state.datas[currentNum]);
   const sprints = useSelector((state) => state.sprints);
   const dispatch = useDispatch();
 
@@ -14,7 +16,6 @@ const AppModalView = () => {
     payload[event.target.id] = event.target.value;
 
     dispatch({ type: EDIT_TASK, payload });
-    dispatch({ type: SET_CURRENT_TASK, task });
   };
 
   const handleDelete = (event) => {
@@ -24,7 +25,7 @@ const AppModalView = () => {
   };
 
   return (
-    <div id={task.id}>
+    <div id={task.id ? task.id : '-'}>
       <input type="text" id="title" value={task.title} onChange={handleChange} />
       <input type="number" id="point" value={task.point} onChange={handleChange} />
       <select id="sprint" onChange={handleChange} value={task.sprint}>

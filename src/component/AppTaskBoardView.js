@@ -42,21 +42,21 @@ const AppTaskBoardView = () => {
     setIsOpen(false);
   };
 
-  const handleClickEvent = (task) => {
+  const handleClickEvent = (index) => {
     if (isDrag) {
       setIsDrag(false);
       return;
     }
 
     // Modal Open if never draggable
-    const payload = task;
+    const payload = index;
     dispatch({ type: SET_CURRENT_TASK, payload });
     setIsOpen(true);
   };
 
   return (
     <div className="task-board">
-      {tasks.map((task) => (
+      {tasks.map((task, index) => (
         <Draggable
           key={task.id}
           defaultPosition={task.position}
@@ -67,7 +67,7 @@ const AppTaskBoardView = () => {
             id={task.id}
             key={task.id}
             className={task.tag}
-            onClick={() => handleClickEvent(task)}
+            onClick={() => handleClickEvent(index)}
             onKeyDown={handleClickEvent}
             role="button"
             tabIndex={0}
