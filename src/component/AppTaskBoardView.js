@@ -4,7 +4,9 @@ import Draggable from 'react-draggable';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppModalView from './AppModalView';
-import { EDIT_TASK, SET_CURRENT_TASK } from '../constants/action-types';
+import {
+  EDIT_TASK, SET_CURRENT_TASK, DELETE_TASK, ADD_TASK,
+} from '../constants/action-types';
 import '../css/AppTaskBoardView.css';
 
 const customStyles = {
@@ -42,6 +44,11 @@ const AppTaskBoardView = () => {
     setIsOpen(false);
   };
 
+  const deleteModal = (payload) => {
+    closeModal();
+    dispatch({ type: DELETE_TASK, payload });
+  };
+
   const handleClickEvent = (index) => {
     if (isDrag) {
       setIsDrag(false);
@@ -54,8 +61,27 @@ const AppTaskBoardView = () => {
     setIsOpen(true);
   };
 
+  const addTask = () => {
+    dispatch({ type: ADD_TASK });
+  };
+
   return (
     <div className="task-board">
+
+      {/* controller */}
+      <div className="borad-controller">
+        <div
+          onKeyDown={handleClickEvent}
+          role="button"
+          tabIndex={0}
+          className="controller-item"
+          onClick={addTask}
+        >
+          タスクの追加
+        </div>
+      </div>
+
+      {/* Tag Items */}
       {tasks.map((task, index) => (
         <Draggable
           key={task.id}
@@ -75,21 +101,24 @@ const AppTaskBoardView = () => {
             {task.title}
             <div className="point-area">
               {task.sprint && (
-              <FontAwesomeIcon icon={['far', 'check-circle']} className="check-icon" />
+                <FontAwesomeIcon icon={['far', 'check-circle']} className="check-icon" />
               )}
               {task.point}
             </div>
           </div>
         </Draggable>
       ))}
+
+      {/* Modal */}
       <Modal
         isOpen={modalIsOpen}
         ariaHideApp={false}
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <AppModalView />
+        <AppModalView deleteModal={deleteModal} />
       </Modal>
+
     </div>
   );
 };
