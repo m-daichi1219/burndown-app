@@ -19,7 +19,7 @@
   position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
-  display: grid;
+  display: inline-block;
   width: 120px;
   height: 100px;
   white-space: normal;
@@ -33,7 +33,7 @@
   position: inline-block;
   border: 1px solid gray;
   letter-spacing: 1px;
-  display: block;
+  display: inline-block;
   width: 120px;
   height: 100px;
   white-space: normal;
