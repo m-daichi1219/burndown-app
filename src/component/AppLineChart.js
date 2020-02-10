@@ -93,7 +93,7 @@ const AppLineChart = () => {
   };
 
   return (
-    <Line data={data} option={option} />
+    <Line data={data} options={option} />
   );
 };
 
