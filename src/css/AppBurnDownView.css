@@ -1,16 +1,7 @@
 .burndown-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.task-area {
-  background-color: white;
-  box-shadow: 1px 1px 10px;
-  padding: 10px 0 10px 0;
-  margin: 10px;
-  grid-column: 1 / 2;
-  grid-row: 1 / 6;
+  grid-template-rows: repeat(3, 200px);
+  grid-template-columns: minmax(100px, auto);
 }
 
 .chart-area {
@@ -18,39 +9,15 @@
   box-shadow: 1px 1px 10px;
   padding: 10px;
   margin: 10px;
-  grid-column: 2 / 4;
   grid-row: 1 / 4;
 }
 
 .sprint-area {
+  position: relative;
   background-color: white;
   box-shadow: 1px 1px 10px;
   padding: 10px;
   margin: 10px;
-  height: 150px;
-  grid-column: 2 / 4;
-  grid-row: 4 / 6;
-}
-
-@media (max-width: 768px) {
-  .burndown-layout {
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
-    grid-template-rows: minmax(10px, auto);
-  }
-
-  .task-area {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .chart-area {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .sprint-area {
-    grid-column: 1;
-    grid-row: 3;
-  }
+  height: 180px;
+  grid-row: 4;
 }
