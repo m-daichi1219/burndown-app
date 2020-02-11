@@ -8,6 +8,7 @@ import AppBurnDownView from './AppBurnDownView';
 import AppVelocityView from './AppVelocityView';
 import AppTaskBoardView from './AppTaskBoardView';
 import AppTestView from './AppTestView';
+import GuardeRoute from '../router/guardes';
 import '../css/App.css';
 
 Modal.setAppElement('#root');
@@ -31,15 +32,15 @@ const App = () => (
         <Route exact path="/">
           <Redirect to="/burndown" />
         </Route>
-        <Route path="/burndown">
+        <GuardeRoute path="/burndown">
           <AppBurnDownView />
-        </Route>
-        <Route path="/velocity">
+        </GuardeRoute>
+        <GuardeRoute path="/velocity">
           <AppVelocityView />
-        </Route>
-        <Route path="/taskboard">
+        </GuardeRoute>
+        <GuardeRoute path="/taskboard">
           <AppTaskBoardView />
-        </Route>
+        </GuardeRoute>
         <Route path="/test">
           <AppTestView />
         </Route>
