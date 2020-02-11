@@ -116,7 +116,7 @@ const AppTaskBoardView = () => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <AppModalView deleteModal={deleteModal} />
+        <AppModalView deleteModal={deleteModal} closeModal={closeModal} />
       </Modal>
 
     </div>
