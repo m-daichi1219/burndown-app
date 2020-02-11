@@ -1,5 +1,6 @@
 export const initialData = {
   title: '',
+  detail: '',
   point: '',
   sprint: '',
   id: '',
@@ -13,6 +14,7 @@ export const initialState = {
   datas: [
     {
       title: '設計',
+      detail: '',
       point: '12',
       sprint: '1',
       id: 'data1',
@@ -21,6 +23,7 @@ export const initialState = {
     },
     {
       title: '開発環境の準備',
+      detail: '',
       point: '8',
       sprint: '2',
       id: 'data2',
@@ -29,6 +32,7 @@ export const initialState = {
     },
     {
       title: 'ログインページ作成',
+      detail: '',
       point: '13',
       sprint: '3',
       id: 'data3',
@@ -37,6 +41,7 @@ export const initialState = {
     },
     {
       title: '認証処理の実装(フロント）',
+      detail: '',
       point: '8',
       sprint: '4',
       id: 'data4',
@@ -45,6 +50,7 @@ export const initialState = {
     },
     {
       title: '認証処理の実装（バックエンド）',
+      detail: '',
       point: '14',
       sprint: '5',
       id: 'data5',
@@ -53,6 +59,7 @@ export const initialState = {
     },
     {
       title: 'ユーザーページ作成',
+      detail: '',
       point: '14',
       sprint: '',
       id: 'data6',
@@ -61,6 +68,7 @@ export const initialState = {
     },
     {
       title: 'フレンドページ作成',
+      detail: '',
       point: '12',
       sprint: '',
       id: 'data7',
@@ -69,6 +77,7 @@ export const initialState = {
     },
     {
       title: 'フレンド機能の実装',
+      detail: '',
       point: '8',
       sprint: '',
       id: 'data8',
@@ -77,6 +86,7 @@ export const initialState = {
     },
     {
       title: '問い合わせページ作成',
+      detail: '',
       point: '13',
       sprint: '',
       id: 'data9',
@@ -85,6 +95,7 @@ export const initialState = {
     },
     {
       title: '問い合わせ機能の実装',
+      detail: '',
       point: '22',
       sprint: '',
       id: 'data10',
@@ -93,18 +104,11 @@ export const initialState = {
     },
     {
       title: 'ログアウト機能の実装',
+      detail: '',
       point: '14',
       sprint: '',
       id: 'data11',
       tag: 'draggable-gray',
-      position: { x: 0, y: 0 },
-    },
-    {
-      title: '',
-      point: '',
-      sprint: '',
-      id: 'data12',
-      tag: 'draggable-yellow',
       position: { x: 0, y: 0 },
     },
   ],
