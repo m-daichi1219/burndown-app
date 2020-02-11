@@ -26,15 +26,19 @@ const AppSprintTable = () => {
   return (
     <>
       <div className="app-sprint-table">
+        <div className="app-sprint-col">
+          <p>Period</p>
+          <p>Velocity</p>
+        </div>
         {sprints.map((sprint, index) => (
-          <div className="col" id="col" key={sprint.id}>
+          <div className="app-sprint-col" id={sprint.id} key={sprint.id}>
             <p>{`Sprint${index}`}</p>
             <input type="number" id={sprint.id} value={sprint.velocity} onChange={handleChange} />
           </div>
         ))}
       </div>
-      <button type="button" onClick={addSprint}>Sprintを追加</button>
-      <button type="button" onClick={deleteSprint} disabled={sprints.length < 5}>Sprintを減らす</button>
+      <button type="button" onClick={addSprint} className="sprint-plus-button">Sprintを追加</button>
+      <button type="button" onClick={deleteSprint} disabled={sprints.length < 5} className="sprint-minus-button">Sprintを減らす</button>
     </>
   );
 };
