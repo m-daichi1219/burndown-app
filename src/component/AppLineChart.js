@@ -83,6 +83,7 @@ const AppLineChart = () => {
   };
 
   const option = {
+    maintainAspectRatio: false,
     scales: {
       yAxes: [{
         ticks: {
